@@ -1,0 +1,35 @@
+{% extends 'layout/header.html' %}
+{% load static %}
+
+{% block content %}
+<div class="content container mx-auto px-4">
+
+    <h2 class="text-2xl font-bold mb-4">Welcome to Malizia Index Page</h2>
+
+    <!-- Section-5 -->
+    <h1 class="text-3xl font-extrabold text-gray-800 mb-6">Our Work</h1>
+    <h2 style="color: #000000; font-size: 2.75rem; font-weight: 800; line-height: 1.2;">
+        Excellence from concept<br>to completion
+      </h2>
+    <br>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+        {% for section_5 in section_5s %}
+            <div class="border rounded-lg shadow p-4 bg-white">
+                {% if section_5.image %}
+                    <img src="{% static section_5.image %}" alt="{{ section_5.name }}" class="w-full h-auto mb-2 rounded">
+                {% endif %}
+                <h2 class="text-lg font-semibold">{{ section_5.name }}</h2>
+                <p class="text-sm"><strong>Type:</strong> {{ section_5.type }}</p>
+                <p class="text-sm"><strong>Location:</strong> {{ section_5.location }}</p>
+                <p class="text-sm text-gray-700 mt-2"><strong>Details:</strong> {{ section_5.details }}</p>
+            </div>
+        {% empty %}
+            <p>No projects to display.</p>
+        {% endfor %}
+    </div>
+
+    <!-- section_8.html -->
+    {% include 'sections/section_8.html' %}
+
+</div>
+{% endblock %}
